@@ -1,0 +1,474 @@
+/* Shruti's Barbie-Style Portfolio CSS */
+
+/* Base Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Custom Scrollbar - Pink Theme */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a0a14;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #ff69b4, #ff1493);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #ff1493, #da70d6);
+}
+
+/* Selection */
+::selection {
+    background: #ff69b4;
+    color: white;
+}
+
+/* Sparkle Background */
+.sparkle-bg {
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #ff69b4, transparent),
+        radial-gradient(2px 2px at 40px 70px, #ffb6c1, transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(2px 2px at 130px 80px, #da70d6, transparent),
+        radial-gradient(1px 1px at 160px 120px, #ff69b4, transparent);
+    background-size: 200px 200px;
+    animation: sparkleMove 20s linear infinite;
+}
+
+@keyframes sparkleMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 200px 200px; }
+}
+
+/* Floating Hearts Animation */
+.floating-hearts::before,
+.floating-hearts::after {
+    content: '💖';
+    position: absolute;
+    font-size: 24px;
+    animation: floatHearts 15s linear infinite;
+    opacity: 0.3;
+}
+
+.floating-hearts::before {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-hearts::after {
+    content: '✨';
+    right: 15%;
+    animation-delay: 7s;
+}
+
+@keyframes floatHearts {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.4;
+    }
+    90% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Gradient Text Shimmer */
+.shimmer-text {
+    background: linear-gradient(
+        90deg,
+        #ff69b4 0%,
+        #ff1493 25%,
+        #da70d6 50%,
+        #ff1493 75%,
+        #ff69b4 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Glow Effects */
+.glow-pink {
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5),
+                0 0 40px rgba(255, 105, 180, 0.3),
+                0 0 60px rgba(255, 105, 180, 0.1);
+}
+
+.glow-text {
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.8),
+                 0 0 20px rgba(255, 105, 180, 0.5),
+                 0 0 30px rgba(255, 105, 180, 0.3);
+}
+
+/* Button Hover Effects */
+.btn-sparkle {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-sparkle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-sparkle:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Card Hover Effects */
+.card-float {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-float:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 105, 180, 0.2);
+}
+
+/* Image Border Gradient */
+.border-gradient {
+    border: 4px solid transparent;
+    background: linear-gradient(#1a0a14, #1a0a14) padding-box,
+                linear-gradient(135deg, #ff69b4, #ff1493, #da70d6) border-box;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Form Input Focus */
+input:focus, textarea:focus {
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .floating-hearts::before,
+    .floating-hearts::after {
+        display: none;
+    }
+
+    /* Mobile Navigation */
+    nav {
+        padding: 0.75rem 1rem !important;
+    }
+
+    /* Mobile Hero Adjustments */
+    #home {
+        padding-top: 5rem;
+        min-height: auto;
+        padding-bottom: 3rem;
+    }
+
+    #home h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.2;
+    }
+
+    #home .text-xl {
+        font-size: 1rem !important;
+    }
+
+    /* Mobile Profile Image */
+    #home .w-80 {
+        width: 280px !important;
+        height: 280px !important;
+    }
+
+    /* Mobile Stats Grid */
+    #home .gap-8 {
+        gap: 1rem;
+    }
+
+    /* Mobile Section Padding */
+    section {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+    }
+
+    /* Mobile Section Headers */
+    section h2 {
+        font-size: 2rem !important;
+    }
+
+    /* Mobile Experience Timeline */
+    #experience .md\\:flex-row {
+        flex-direction: column !important;
+    }
+
+    #experience .md\\:w-1\\/2 {
+        width: 100% !important;
+        padding-left: 2rem !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+    }
+
+    #experience .md\\:left-1\\/2 {
+        left: 0 !important;
+    }
+
+    /* Mobile Skills Grid */
+    #skills .grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+
+    #skills .p-6 {
+        padding: 1rem !important;
+    }
+
+    #skills .w-16 {
+        width: 3rem !important;
+        height: 3rem !important;
+    }
+
+    /* Mobile Contact Form */
+    #contact .grid-cols-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    #contact .md\\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Mobile About Grid */
+    #about .md\\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    #about .grid-cols-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Reduce floating elements on mobile for performance */
+    .sparkle-bg {
+        opacity: 0.3 !important;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    #home h1 {
+        font-size: 2rem !important;
+    }
+
+    #home .w-80 {
+        width: 220px !important;
+        height: 220px !important;
+    }
+
+    /* Smaller buttons on mobile */
+    #home .px-8 {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+    }
+
+    #home .py-3\\.5 {
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+
+    /* Hide secondary stats on very small screens */
+    #home .gap-8 > div:nth-child(2),
+    #home .gap-8 > div:nth-child(4) {
+        display: none;
+    }
+}
+
+/* Heart Beat Animation for Icons */
+.heart-beat {
+    animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+}
+
+/* Butterfly floating animation */
+.butterfly {
+    display: inline-block;
+    animation: butterflyFloat 4s ease-in-out infinite;
+}
+
+@keyframes butterflyFloat {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg); 
+    }
+    25% { 
+        transform: translateY(-10px) rotate(5deg); 
+    }
+    50% { 
+        transform: translateY(0) rotate(0deg); 
+    }
+    75% { 
+        transform: translateY(-5px) rotate(-5deg); 
+    }
+}
+
+/* Loading animation */
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 105, 180, 0.3);
+    border-top-color: #ff69b4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ========== PARALLAX EFFECTS ========== */
+
+/* Parallax Container */
+.parallax-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+/* Parallax Elements */
+.parallax-slow {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+.parallax-medium {
+    will-change: transform;
+    transition: transform 0.08s ease-out;
+}
+
+.parallax-fast {
+    will-change: transform;
+    transition: transform 0.05s ease-out;
+}
+
+/* Floating Glow Orbs */
+.parallax-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    will-change: transform;
+}
+
+.parallax-orb-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 105, 180, 0.3), transparent);
+    top: 10%;
+    left: 10%;
+}
+
+.parallax-orb-2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(218, 112, 214, 0.25), transparent);
+    bottom: 20%;
+    right: 10%;
+}
+
+.parallax-orb-3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(255, 20, 147, 0.2), transparent);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Mouse Move Tilt Effect */
+.tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+}
+
+.tilt-card:hover {
+    transform: rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg)) scale(1.02);
+}
+
+/* Scroll Reveal Animation */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger animation for grid items */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Theme-aware scrollbar for light mode */
+:root:not(.dark) ::-webkit-scrollbar-track {
+    background: #fff0f5;
+}
+
+:root:not(.dark) ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #ff69b4, #ff1493);
+}
+
+/* Disable parallax on mobile for performance */
+@media (max-width: 768px) {
+    .parallax-orb {
+        display: none;
+    }
+    
+    .tilt-card:hover {
+        transform: none;
+    }
+    
+    .parallax-slow,
+    .parallax-medium,
+    .parallax-fast {
+        transform: none !important;
+    }
+}
+
