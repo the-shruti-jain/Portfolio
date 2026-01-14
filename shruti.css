@@ -239,6 +239,11 @@ input:focus, textarea:focus {
         left: 0 !important;
     }
 
+    /* Mobile Timeline Dates - prevent overlap */
+    #experience .flex.items-center span {
+        padding-left: 2rem !important;
+    }
+
     /* Mobile Skills Grid */
     #skills .grid {
         grid-template-columns: repeat(2, 1fr) !important;
